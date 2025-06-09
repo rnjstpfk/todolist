@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+      import { getAuth, signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+      window.firebaseApp = initializeApp({
+        apiKey: "AIzaSyAPFWM1gRimyBiwGnyFEK_9tS6JWy3z6XY",
+        authDomain: "todolist-389e2.firebaseapp.com",
+        projectId: "todolist-389e2",
+        storageBucket: "todolist-389e2.appspot.com",
+        messagingSenderId: "7573199947",
+        appId: "1:7573199947:web:0132e5ce479a409e0a81ce",
+        measurementId: "G-BE6GMKT7NY"
+      });
+      window.firebaseAuth = getAuth(firebaseApp);
+      window.signInWithEmailAndPassword = signInWithEmailAndPassword;
+    </script>
+</head>
+<body class="login-bg">
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form class="login-form">
+            <input type="email" id="login-email" placeholder="이메일" required>
+            <input type="password" id="login-password" placeholder="비밀번호" required>
+            <button type="submit">로그인</button>
+        </form>
+        <div class="signup-link">
+            계정이 없으신가요? <a href="signup.html">회원가입</a>
+        </div>
+    </div>
+    <script type="module">
+    document.querySelector('.login-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const pw = document.getElementById('login-password').value.trim();
+        if (!email || !pw) {
+            alert('이메일과 비밀번호를 입력하세요.');
+            return;
+        }
+        try {
+            await window.signInWithEmailAndPassword(window.firebaseAuth, email, pw);
+            alert('로그인 성공!');
+            window.location.href = 'index.html';
+        } catch (error) {
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                alert('이메일 또는 비밀번호가 올바르지 않습니다.');
+            } else if (error.code === 'auth/invalid-email') {
+                alert('유효하지 않은 이메일 형식입니다.');
+            } else {
+                alert('로그인 실패: ' + error.message);
+            }
+        }
+    });
+    </script>
+</body>
+</html> 

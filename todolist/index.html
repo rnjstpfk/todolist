@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화려한 투두리스트</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+      import { getAuth, onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+      window.firebaseApp = initializeApp({
+        apiKey: "AIzaSyAPFWM1gRimyBiwGnyFEK_9tS6JWy3z6XY",
+        authDomain: "todolist-389e2.firebaseapp.com",
+        projectId: "todolist-389e2",
+        storageBucket: "todolist-389e2.appspot.com",
+        messagingSenderId: "7573199947",
+        appId: "1:7573199947:web:0132e5ce479a409e0a81ce",
+        measurementId: "G-BE6GMKT7NY"
+      });
+      window.firebaseAuth = getAuth(firebaseApp);
+      window.onAuthStateChanged = onAuthStateChanged;
+      window.signOut = signOut;
+    </script>
+</head>
+<body>
+    <div id="auth-bar"></div>
+    <div class="container">
+        <h1>✨ 나의 투두리스트 ✨</h1>
+        <div class="input-section">
+            <input type="text" id="taskInput" placeholder="할 일을 입력하세요...">
+            <button id="addTask">추가</button>
+        </div>
+        <ul id="taskList">
+            <!-- 여기에 할 일 목록이 동적으로 추가됩니다 -->
+        </ul>
+    </div>
+    <script type="module" src="script.js"></script>
+    <script type="module">
+    const authBar = document.getElementById('auth-bar');
+    import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+    import { getAuth } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+    const auth = getAuth();
+    function renderAuth(user) {
+        if (user) {
+            const name = user.displayName || user.email;
+            authBar.innerHTML = `<div style="position:fixed;top:27px;right:32px;z-index:100;display:flex;align-items:center;gap:32px; margin-right: 150px;">
+                <span style='font-weight:bold;color:#7c5c2a;background:#fff8ed;border-radius:8px;padding:7px 16px;box-shadow:0 2px 8px #e2c79922;'>${name}님 환영합니다.</span>
+                <button class="login-btn-fixed" id="logout-btn">로그아웃</button>
+            </div>`;
+            document.getElementById('logout-btn').onclick = async () => {
+                await signOut(auth);
+                location.reload();
+            };
+        } else {
+            authBar.innerHTML = `<button class="login-btn-fixed" onclick="location.href='login.html'">로그인</button>`;
+        }
+    }
+    onAuthStateChanged(auth, renderAuth);
+    </script>
+</body>
+</html> 
