@@ -370,7 +370,6 @@ body {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
-    /* background: linear-gradient(120deg, #e2c79955 0%, #c9b18a55 0%, #fbeee6cc 100%); */
     z-index: 1;
     pointer-events: none;
 }
