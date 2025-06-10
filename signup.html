@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Firebase SDK -->
+    <script type="module">
+      import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js';
+      import { getAuth, createUserWithEmailAndPassword, updateProfile } from 'https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js';
+      window.firebaseApp = initializeApp({
+        apiKey: "AIzaSyAPFWM1gRimyBiwGnyFEK_9tS6JWy3z6XY",
+        authDomain: "todolist-389e2.firebaseapp.com",
+        projectId: "todolist-389e2",
+        storageBucket: "todolist-389e2.appspot.com",
+        messagingSenderId: "7573199947",
+        appId: "1:7573199947:web:0132e5ce479a409e0a81ce",
+        measurementId: "G-BE6GMKT7NY"
+      });
+      window.firebaseAuth = getAuth(firebaseApp);
+      window.createUserWithEmailAndPassword = createUserWithEmailAndPassword;
+      window.updateProfile = updateProfile;
+    </script>
+</head>
+<body class="login-bg">
+    <div class="logo-bunny">🐰</div>
+    <div class="login-container">
+        <h2>회원가입</h2>
+        <form class="signup-form">
+            <input type="text" id="signup-name" placeholder="이름" required>
+            <input type="email" id="signup-email" placeholder="이메일" required>
+            <input type="password" id="signup-password" placeholder="비밀번호" required>
+            <input type="password" id="signup-password2" placeholder="비밀번호 확인" required>
+            <button type="submit">회원가입</button>
+        </form>
+        <div class="signup-link">
+            이미 계정이 있으신가요? <a href="login.html">로그인</a>
+        </div>
+    </div>
+    <script type="module">
+    const form = document.querySelector('.signup-form');
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const name = document.getElementById('signup-name').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const pw = document.getElementById('signup-password').value.trim();
+        const pw2 = document.getElementById('signup-password2').value.trim();
+        if (!name || !email || !pw || !pw2) {
+            alert('모든 항목을 입력하세요.');
+            return;
+        }
+        if (pw !== pw2) {
+            alert('비밀번호가 일치하지 않습니다.');
+            return;
+        }
+        try {
+            const userCredential = await window.createUserWithEmailAndPassword(window.firebaseAuth, email, pw);
+            await window.updateProfile(userCredential.user, { displayName: name });
+            alert('회원가입이 완료되었습니다!');
+            window.location.href = 'login.html';
+        } catch (error) {
+            if (error.code === 'auth/email-already-in-use') {
+                alert('이미 사용 중인 이메일입니다.');
+            } else if (error.code === 'auth/invalid-email') {
+                alert('유효하지 않은 이메일 형식입니다.');
+            } else if (error.code === 'auth/weak-password') {
+                alert('비밀번호는 6자 이상이어야 합니다.');
+            } else {
+                alert('회원가입 실패: ' + error.message);
+            }
+        }
+    });
+    </script>
+</body>
+</html> 
