@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>레이디버그 & 블랙캣 - 마법의 세계로 오세요!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- 네비게이션 바 -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Miraculous Ladybug 로고" style="height:56px;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html" class="active">🏠 홈</a>
+                <a href="characters.html">👤 캐릭터</a>
+                <a href="episodes.html">🎬 에피소드</a>
+                <a href="gallery.html">🎨 갤러리</a>
+                <a href="quiz.html">🧠 퀴즈</a>
+                <a href="lore.html">📜 세계관</a>
+                <a href="news.html">🗞 뉴스</a>
+                <a href="community.html">📬 커뮤니티</a>
+            </div>
+            <div class="auth-bar">
+                <button class="login-btn" onclick="location.href='login.html'">로그인</button>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 메인 슬라이더 -->
+    <section class="hero-slider">
+        <div class="slider-container">
+            <div class="slide active">
+                <img src="images/slider1.jpg" alt="레이디버그와 블랙캣">
+                <div class="slide-content">
+                    <h1>파리의 수호자, 레이디버그와 블랙캣</h1>
+                    <p>함께하는 모험의 시작!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slider2.jpg" alt="레이디버그 더 무비">
+                <div class="slide-content">
+                    <h1>레이디버그와 블랙캣: 더 무비</h1>
+                    <p>넷플릭스에서 만나요!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slider3.jpg" alt="미라큘러스 월드">
+                <div class="slide-content">
+                    <h1>미라큘러스 월드</h1>
+                    <p>뉴욕, 하나된 영웅들!</p>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="images/slider4.jpg" alt="크리스마스 스페셜">
+                <div class="slide-content">
+                    <h1>크리스마스 스페셜</h1>
+                    <p>따뜻한 겨울, 레이디버그와 함께!</p>
+                </div>
+            </div>
+        </div>
+        <div class="slider-controls">
+            <button class="prev-btn"><i class="fas fa-chevron-left"></i></button>
+            <button class="next-btn"><i class="fas fa-chevron-right"></i></button>
+        </div>
+    </section>
+
+    <!-- 오늘의 명대사 -->
+    <section class="quote-section">
+        <div class="container">
+            <h2>오늘의 명대사</h2>
+            <div class="quote-box">
+                <p class="quote-text">"Spots on!"</p>
+                <p class="quote-author">- 레이디버그</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 최신 소식 -->
+    <section class="news-section">
+        <div class="container">
+            <h2>최신 소식</h2>
+            <div class="news-grid">
+                <article class="news-card">
+                    <img src="images/news1.jpg" alt="뉴스 이미지">
+                    <div class="news-content">
+                        <h3>새로운 시즌 공개!</h3>
+                        <p>레이디버그 & 블랙캣의 새로운 모험이 시작됩니다.</p>
+                        <a href="#" class="read-more">자세히 보기</a>
+                    </div>
+                </article>
+                <!-- 추가 뉴스 카드 -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 퀵 메뉴 -->
+    <section class="quick-menu">
+        <div class="container">
+            <div class="menu-grid">
+                <a href="/characters" class="menu-item">
+                    <i class="fas fa-user-circle"></i>
+                    <span>캐릭터 소개</span>
+                </a>
+                <a href="/episodes" class="menu-item">
+                    <i class="fas fa-film"></i>
+                    <span>에피소드</span>
+                </a>
+                <a href="/quiz" class="menu-item">
+                    <i class="fas fa-question-circle"></i>
+                    <span>퀴즈</span>
+                </a>
+                <a href="/gallery" class="menu-item">
+                    <i class="fas fa-images"></i>
+                    <span>갤러리</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 푸터 -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>레이디버그 & 블랙캣</h3>
+                    <p>파리의 수호자들의 모험을 함께하세요!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>바로가기</h3>
+                    <ul>
+                        <li><a href="/characters">캐릭터 소개</a></li>
+                        <li><a href="/episodes">에피소드</a></li>
+                        <li><a href="/gallery">갤러리</a></li>
+                        <li><a href="/community">커뮤니티</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>소셜 미디어</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 레이디버그 & 블랙캣. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="js/main.js"></script>
+</body>
+</html> 

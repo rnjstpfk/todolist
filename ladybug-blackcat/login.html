@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - 레이디버그 & 블랙캣</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        .login-container { max-width: 350px; margin: 100px auto; background: #fff; border-radius: 18px; box-shadow: 0 4px 24px #ff4d6d22; padding: 2.5rem 2rem 2rem 2rem; text-align: center; }
+        .login-container h2 { color: #ff4d6d; margin-bottom: 1.5rem; }
+        .login-form { display: flex; flex-direction: column; gap: 1.2rem; }
+        .login-form input { padding: 12px; border: 2px solid #ff4d6d22; border-radius: 10px; font-size: 1em; }
+        .login-form button { padding: 12px 0; background: linear-gradient(90deg, #e2c799 60%, #c9b18a 100%); border: none; border-radius: 10px; color: #fff; font-size: 1.1em; font-weight: bold; cursor: pointer; margin-top: 8px; transition: background 0.2s; box-shadow: 0 2px 8px #ff4d6d22; }
+        .login-form button:hover { background: linear-gradient(90deg, #c9b18a 60%, #e2c799 100%); }
+        .signup-link { margin-top: 18px; font-size: 1em; color: #2b2d42; }
+        .signup-link button { background: none; border: none; color: #ff4d6d; font-weight: bold; cursor: pointer; text-decoration: underline; font-size: 1em; }
+        .logo-center {display: flex; justify-content: center; margin-top: 40px;}
+
+    </style>
+</head>
+<body>
+    <div class="logo-center">
+        <a href="index.html"><img src="images/logo.png" alt="Miraculous Ladybug 로고" style="height:56px;"></a>
+    </div>
+    <div class="login-container">
+        <h2>로그인</h2>
+        <form class="login-form">
+            <input type="email" id="login-email" placeholder="이메일" required>
+            <input type="password" id="login-password" placeholder="비밀번호" required>
+            <button type="submit">로그인</button>
+        </form>
+        <div class="signup-link">
+            회원이 아니신가요? <button onclick="location.href='signup.html'">회원가입</button>
+        </div>
+    </div>
+    <script type="module">
+    import { login } from './js/firebase-auth.js';
+
+    const form = document.querySelector('.login-form');
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const email = document.getElementById('login-email').value.trim();
+        const pw = document.getElementById('login-password').value.trim();
+        if (!email || !pw) {
+            alert('이메일과 비밀번호를 입력하세요.');
+            return;
+        }
+        try {
+            await login(email, pw);
+            alert('로그인 성공!');
+            window.location.href = 'index.html';
+        } catch (error) {
+            if (error.code === 'auth/user-not-found' || error.code === 'auth/wrong-password') {
+                alert('이메일 또는 비밀번호가 올바르지 않습니다.');
+            } else if (error.code === 'auth/invalid-email') {
+                alert('유효하지 않은 이메일 형식입니다.');
+            } else {
+                alert('로그인 실패: ' + error.message);
+            }
+        }
+    });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>캐릭터 소개 - 레이디버그 & 블랙캣</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+        /* 👇 body 전체를 Flex 세로 정렬로 설정 */
+        body {display: flex; flex-direction: column; min-height: 100vh; margin: 0; font-family: 'Noto Sans KR', sans-serif;}
+
+         /* 👇 main은 확장 가능하도록 */
+        main {flex: 1;}
+        .footer {border-top: 1px solid #eee; padding: 2rem 1rem; font-size: 0.9rem;}
+        .character-tabs { display: flex; gap: 1rem; margin: 2rem 0 1rem 0; justify-content: center; }
+        .character-tab { padding: 0.7rem 2rem; border-radius: 20px 20px 0 0; background: #fff; color: #ff4d6d; font-weight: bold; border: 2px solid #ff4d6d22; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        .character-tab.active, .character-tab:hover { background: #ff4d6d; color: #fff; }
+        .character-section { display: none; background: #fff; border-radius: 0 0 20px 20px; box-shadow: 0 2px 12px #ff4d6d11; padding: 2rem; margin-bottom: 3rem; }
+        .character-section.active { display: block; }
+        .character-list { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; }
+        .character-card { background: #f8f9fa; border-radius: 16px; box-shadow: 0 2px 8px #3a86ff11; padding: 1.5rem; width: 220px; text-align: center; }
+        .character-card img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 1rem; border: 3px solid #ff4d6d44; }
+        .character-card h3 { color: #ff4d6d; margin-bottom: 0.5rem; }
+        .character-card p { font-size: 0.98em; color: #2b2d42; }
+        @media (max-width: 600px) { .character-list { flex-direction: column; align-items: center; } }
+        .character-category {margin-bottom: 2.5rem;}
+        .character-category h3 {color: #c9b18a; margin-bottom: 1rem; font-size: 1.25em;}
+        .character-card .voice {display:block; margin-top:0.5em; font-size:0.95em; color:#b8a07a;}
+        @media (max-width: 900px) {
+          .character-list {gap: 1rem;}
+          .character-card {width: 160px; padding: 1rem;}
+        }
+        @media (max-width: 600px) {
+          .character-list {flex-direction: column; align-items: center;}
+          .character-card {width: 95vw; max-width: 350px;}
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Miraculous Ladybug 로고" style="height:56px;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">🏠 홈</a>
+                <a href="characters.html" class="active">👤 캐릭터</a>
+                <a href="episodes.html">🎬 에피소드</a>
+                <a href="gallery.html">🎨 갤러리</a>
+                <a href="quiz.html">🧠 퀴즈</a>
+                <a href="lore.html">📜 세계관</a>
+                <a href="news.html">🗞 뉴스</a>
+                <a href="community.html">📬 커뮤니티</a>
+            </div>
+            <div class="auth-bar">
+                <button class="login-btn" onclick="location.href='login.html'">로그인</button>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <main class="container" style="margin-top:90px;">
+        <div class="character-tabs">
+            <button class="character-tab active" data-tab="main">등장인물</button>
+            <button class="character-tab" data-tab="fairy">요정 소개</button>
+            <button class="character-tab" data-tab="lore">세계관</button>
+        </div>
+        <section class="character-section active" id="main">
+            <h2>등장인물 소개</h2>
+            <div class="character-category">
+                <h3>마리네뜨의 가족</h3>
+                <div class="character-list">
+                    <div class="character-card">
+                        <img src="images/ladybug.png" alt="마리네뜨">
+                        <h3>마리네뜨 뒤팽-첸</h3>
+                        <p>용감하고 정의로운 파리의 수호자. 행운의 힘을 가진 히어로!</p>
+                        <span class="voice">성우: 안영미</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/ladyfafa.webp" alt="톰 뒤팽">
+                        <h3>톰 뒤팽 (아버지)</h3>
+                        <p>마리네뜨의 아버지. 시즌 3에서 늑대 아빠로 지배</p>
+                        <span class="voice">성우: 홍진욱</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/ladymama.jpg" alt="사빈 챙">
+                        <h3>사빈 챙 (어머니)</h3>
+                        <p>마리네뜨의 어머니. 중국 출신. 시즌 4에서 퀼린으로 지배 당함</p>
+                        <span class="voice">성우: 홍희숙</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/wang.webp" alt="왕 챙">
+                        <h3>왕 챙 (외삼촌)</h3>
+                        <p>마리네뜨의 삼촌. 중국 최고의 요리사</p>
+                        <span class="voice">성우: 시영준</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/gina.png" alt="지나 뒤팽">
+                        <h3>지나 뒤팽 (친할머니)</h3>
+                        <p>마리네뜨의 친할머니. 이탈리아인. 마리네뜨를 '마리네따'라고 부름</p>
+                        <span class="voice">성우: 이소영</span>
+                    </div>
+                </div>
+            </div>
+            <div class="character-category">
+                <h3>아드리앙의 가족 및 주변인</h3>
+                <div class="character-list">
+                    <div class="character-card">
+                        <img src="images/blackcat_1.webp" alt="아드리앙">
+                        <h3>아드리앙 아그레스트</h3>
+                        <p>장난기 많고 매력적인 히어로. 파괴의 힘을 가진 고양이!</p>
+                        <span class="voice">성우: 김명준</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/gabriel.webp" alt="가브리엘 아그레스트">
+                        <h3>가브리엘 아그레스트 (아버지)</h3>
+                        <p>아드리앙의 아버지이자 섀도우모스</p>
+                        <span class="voice">성우: 홍시호</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/nathalie.webp" alt="나탈리 생쿼">
+                        <h3>나탈리 생쿼</h3>
+                        <p>가브리엘의 비서이자 마유라</p>
+                        <span class="voice">성우: 한미리</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/emilie.jpg" alt="에밀리 아그레스트">
+                        <h3>에밀리 아그레스트</h3>
+                        <p>아드리앙의 어머니. 작중에서는 사망</p>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/felix.webp" alt="필릭스">
+                        <h3>필릭스</h3>
+                        <p>아드리앙의 사촌. 운동 신경이 뛰어나고 무술을 배움</p>
+                        <span class="voice">성우: 남도형</span>
+                    </div>
+                </div>
+            </div>
+            <div class="character-category">
+                <h3>학교 친구들</h3>
+                <div class="character-list">
+                    <div class="character-card">
+                        <img src="images/lariya.webp" alt="알리야">
+                        <h3>알리야 세제르</h3>
+                        <p>마리네뜨의 가장 친한 친구. 레나 루즈로 변신</p>
+                        <span class="voice">성우: 김은아</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/nino.webp" alt="니노">
+                        <h3>니노 라히프</h3>
+                        <p>아드리앙의 단짝 친구. 캐러페이스로 변신</p>
+                        <span class="voice">성우: 홍범기</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/chloe.webp" alt="클로이">
+                        <h3>클로이 부르주아</h3>
+                        <p>시장 딸, 아드리앙의 소꿉친구. 미라클 퀸이 됨</p>
+                        <span class="voice">성우: 전해리</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/sabrina.webp" alt="사브리나">
+                        <h3>사브리나 레인 컴브레익스</h3>
+                        <p>클로이의 친구이자 마리네뜨와 같은 반</p>
+                        <span class="voice">성우: 권영지</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/alix.webp" alt="알릭스">
+                        <h3>알릭스 꿉델</h3>
+                        <p>인라인 스케이트를 잘 타는 긍정적인 친구</p>
+                        <span class="voice">성우: 김채하</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/nathaniel.webp" alt="나타니엘">
+                        <h3>나타니엘 커츠버그</h3>
+                        <p>그림을 잘 그리는 친구. 한때 마리네뜨를 좋아함</p>
+                        <span class="voice">성우: 오민혁</span>
+                    </div>
+                </div>
+            </div>
+            <div class="character-category">
+                <h3>교직원</h3>
+                <div class="character-list">
+                    <div class="character-card">
+                        <img src="images/principal.webp" alt="다모클레스 교장">
+                        <h3>다모클레스 교장</h3>
+                        <p>학교 교장. 부엉맨으로 영웅 흉내를 내다 지배 당함</p>
+                        <span class="voice">성우: 이민규</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/bustier.webp" alt="칼린 뷔스티에">
+                        <h3>칼린 뷔스티에</h3>
+                        <p>문학과 외국어 담당 교사. 사랑의 좀비주가 된 적 있음</p>
+                        <span class="voice">성우: 권영지</span>
+                    </div>
+                </div>
+            </div>
+            <div class="character-category">
+                <h3>기타 인물</h3>
+                <div class="character-list">
+                    <div class="character-card">
+                        <img src="images/luka.webp" alt="루카 쿠페">
+                        <h3>루카 쿠페</h3>
+                        <p>쥘레카의 오빠. 바이파리온으로 변신</p>
+                        <span class="voice">성우: 강호철</span>
+                    </div>
+                </div>
+            </div>
+            <div class="character-category">
+                <h3>악역</h3>
+                <div class="character-list">
+                    <div class="character-card">
+                        <img src="images/hawk.webp" alt="호크모스">
+                        <h3>호크모스</h3>
+                        <p>사람들을 검은 나비로 지배. 레이디버그와 블랙캣의 미라클스톤을 노림</p>
+                        <span class="voice">성우: 홍시호</span>
+                    </div>
+                    <div class="character-card">
+                        <img src="images/mayura.webp" alt="마유라">
+                        <h3>마유라</h3>
+                        <p>파란 깃털로 사람들을 조종, 호크모스를 돕는 조력자</p>
+                        <span class="voice">성우: 한미리</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="character-section" id="fairy">
+            <h2>요정(콰미) 소개</h2>
+            <div class="character-list">
+                <div class="character-card">
+                    <img src="images/tiki.webp" alt="티키">
+                    <h3>티키</h3>
+                    <p>레이디버그의 콰미. 행운의 힘을 부여하는 귀여운 요정!</p>
+                </div>
+                <div class="character-card">
+                    <img src="images/vmffor.webp" alt="플랙">
+                    <h3>플랙</h3>
+                    <p>블랙캣의 콰미. 치즈를 좋아하는 장난꾸러기 요정!</p>
+                </div>
+            </div>
+        </section>
+        <section class="character-section" id="lore">
+            <h2>세계관</h2>
+            <p>미라큘러스는 파리를 배경으로, 평범한 학생들이 마법의 힘을 가진 히어로로 변신해 악당과 맞서 싸우는 이야기를 담고 있습니다.<br>
+            각 히어로는 콰미라는 요정과 미라큘러스라는 마법 아이템을 통해 힘을 얻으며, 다양한 빌런과의 대결, 우정, 사랑, 성장의 이야기가 펼쳐집니다.</p>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>레이디버그 & 블랙캣</h3>
+                    <p>파리의 수호자들의 모험을 함께하세요!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>바로가기</h3>
+                    <ul>
+                        <li><a href="/characters">캐릭터 소개</a></li>
+                        <li><a href="/episodes">에피소드</a></li>
+                        <li><a href="/gallery">갤러리</a></li>
+                        <li><a href="/community">커뮤니티</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>소셜 미디어</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 레이디버그 & 블랙캣. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // 탭 전환 기능
+    const tabs = document.querySelectorAll('.character-tab');
+    const sections = document.querySelectorAll('.character-section');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+    // 모바일 메뉴 토글
+    document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+    </script>
+</body>
+</html> 

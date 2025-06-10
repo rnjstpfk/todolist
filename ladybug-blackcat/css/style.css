@@ -1,0 +1,440 @@
+/* 기본 스타일 */
+:root {
+    --primary-color: #c9b18a;
+    --secondary-color: #7c5c2a;
+    --accent-color: #e2c799;
+    --text-color: #7c5c2a;
+    --light-bg: #f9f6f1;
+    --white: #fffaf3;
+    --shadow: 0 2px 15px rgba(160, 120, 60, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    /* 레이디버그 감성 그라데이션 배경 */
+    background: linear-gradient(135deg, #fbeee6 0%, #f5e6ca 100%);
+    min-height: 100vh;
+    background-attachment: fixed;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* 네비게이션 바 */
+.navbar {
+    background: rgba(255,250,243,0.95);
+    box-shadow: 0 4px 24px #c9b18a22, 0 2px 15px #7c5c2a11;
+    backdrop-filter: blur(6px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.logo img {
+    height: 56px;
+    filter: drop-shadow(0 2px 8px #c9b18a33);
+    cursor: pointer;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    font-weight: 500;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #e2c799;
+    font-weight: bold;
+    text-shadow: 0 2px 8px #e2c79922;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color);
+}
+
+/* 히어로 슬라이더 */
+.hero-slider {
+    margin-top: 70px;
+    position: relative;
+    height: 600px;
+    overflow: hidden;
+}
+
+.slider-container {
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    z-index: 0;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 20%;
+    left: 10%;
+    color: #ffffff;
+    text-shadow: 2px 2px 8px #d19c7ccc, 0 0 0 #312d2d;
+    z-index: 2;
+}
+
+.slide-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.slider-controls button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.3);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    color: var(--white);
+    font-size: 1.5rem;
+    transition: background 0.3s ease;
+}
+
+.slider-controls button:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.prev-btn {
+    left: 20px;
+}
+
+.next-btn {
+    right: 20px;
+}
+
+/* 명대사 섹션 */
+.quote-section {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.quote-box {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+    background: linear-gradient(90deg, #fffaf3 60%, #e2c79922 100%);
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    border-left: 8px solid #e2c799;
+}
+
+.quote-text {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #c9b18a;
+    margin-bottom: 1rem;
+}
+
+.quote-author {
+    font-size: 1.2rem;
+    color: var(--secondary-color);
+}
+
+/* 뉴스 섹션 */
+.news-section {
+    padding: 4rem 0;
+}
+
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.news-card {
+    background: #fffaf3;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    border: 2px solid #e2c79922;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1.5rem;
+}
+
+.news-content h3 {
+    margin-bottom: 1rem;
+    color: #7c5c2a;
+}
+
+.read-more {
+    display: inline-block;
+    margin-top: 1rem;
+    color: #c9b18a;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+/* 퀵 메뉴 */
+.quick-menu {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.menu-item {
+    text-decoration: none;
+    color: var(--text-color);
+    padding: 2rem;
+    background: linear-gradient(120deg, #fffaf3 70%, #e2c79922 100%);
+    border-radius: 15px;
+    transition: transform 0.3s ease;
+    border: 2px solid #c9b18a22;
+}
+
+.menu-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px #e2c79933;
+}
+
+.menu-item i {
+    font-size: 2.5rem;
+    color: #c9b18a;
+    margin-bottom: 1rem;
+}
+
+/* 푸터 */
+.footer {
+    background: linear-gradient(90deg, #e2c799 0%, #c9b18a 100%);
+    color: #7c5c2a;
+    padding: 4rem 0 2rem;
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+    color: #c9b18a;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-section a:hover {
+    color: #e2c799;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-links a {
+    font-size: 1.5rem;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .hero-slider {
+        height: 400px;
+    }
+
+    .slide-content h1 {
+        font-size: 2rem;
+    }
+
+    .quote-text {
+        font-size: 1.5rem;
+    }
+
+    .news-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-slider {
+        height: 300px;
+    }
+
+    .slide-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 슬라이더 배경에 반투명 오버레이 추가 */
+.hero-slider::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* background: linear-gradient(120deg, #e2c79955 0%, #c9b18a55 0%, #fbeee6cc 100%); */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* 로그인 버튼 감성 스타일 */
+.login-btn {
+    padding: 10px 28px;
+    background: linear-gradient(90deg, #e2c799 60%, #c9b18a 100%);
+    border: none;
+    border-radius: 14px;
+    color: #7c5c2a;
+    font-size: 1.08em;
+    font-weight: bold;
+    box-shadow: 0 2px 12px #e2c79933;
+    transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 18px;
+    letter-spacing: 1px;
+}
+.login-btn:hover {
+    background: linear-gradient(90deg, #c9b18a 60%, #e2c799 100%);
+    color: #fff;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 18px #e2c79955;
+    cursor: pointer;
+}
+
+.auth-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* 카드, 섹션, 탭 등 베이지톤 */
+.character-section, .character-card, .login-container, .signup-container {
+    background: #fffaf3 !important;
+    border-radius: 18px;
+    box-shadow: 0 2px 12px #c9b18a11;
+}
+
+/* 로그인/회원가입 로고 정렬 */
+.logo-center {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 18px;
+}
+
+/* 입력창, 버튼 등 베이지톤 */
+.login-form input, .signup-form input {
+    border: 2px solid #e2c79955;
+    background: #f9f6f1;
+    color: #7c5c2a;
+}
+.login-form button, .signup-form button {
+    background: linear-gradient(90deg, #e2c799 60%, #c9b18a 100%);
+    color: #7c5c2a;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: 0 2px 8px #e2c79922;
+    transition: background 0.2s, color 0.2s;
+    cursor: pointer;
+}
+.login-form button:hover, .signup-form button:hover {
+    background: #c9b18a;
+    color: #fff;
+} 

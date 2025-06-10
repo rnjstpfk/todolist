@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에피소드 - 레이디버그 & 블랙캣</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+
+        /* 👇 body 전체를 Flex 세로 정렬로 설정 */
+        body {display: flex; flex-direction: column; min-height: 100vh; margin: 0; font-family: 'Noto Sans KR', sans-serif;}
+
+         /* 👇 main은 확장 가능하도록 */
+        main {flex: 1;}
+        .footer {border-top: 1px solid #eee; padding: 2rem 1rem; font-size: 0.9rem;}
+        .episode-tabs { display: flex; gap: 1rem; margin: 2rem 0 1rem 0; justify-content: center; }
+        .episode-tab { padding: 0.7rem 2rem; border-radius: 20px 20px 0 0; background: #fffaf3; color: #c9b18a; font-weight: bold; border: 2px solid #e2c79922; cursor: pointer; transition: background 0.2s, color 0.2s; }
+        .episode-tab.active, .episode-tab:hover { background: #e2c799; color: #fff; }
+        .episode-section { display: none; background: #fffaf3; border-radius: 0 0 20px 20px; box-shadow: 0 2px 12px #c9b18a11; padding: 2rem; margin-bottom: 3rem; }
+        .episode-section.active { display: block; }
+        .episode-list { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+        .episode-card { background: #f9f6f1; border-radius: 14px; box-shadow: 0 2px 8px #e2c79922; padding: 1.2rem 1.5rem; width: 220px; text-align: center; }
+        .episode-card h4 { color: #c9b18a; margin-bottom: 0.5rem; }
+        .episode-card p { font-size: 0.97em; color: #7c5c2a; }
+        @media (max-width: 600px) { .episode-list { flex-direction: column; align-items: center; } }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.png" alt="Miraculous Ladybug 로고" style="height:56px;">
+            </a>
+            <div class="nav-links">
+                <a href="index.html">🏠 홈</a>
+                <a href="characters.html">👤 캐릭터</a>
+                <a href="episodes.html" class="active">🎬 에피소드</a>
+                <a href="gallery.html">🎨 갤러리</a>
+                <a href="quiz.html">🧠 퀴즈</a>
+                <a href="lore.html">📜 세계관</a>
+                <a href="news.html">🗞 뉴스</a>
+                <a href="community.html">📬 커뮤니티</a>
+            </div>
+            <div class="auth-bar">
+                <button class="login-btn" onclick="location.href='login.html'">로그인</button>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+    <main class="container" style="margin-top:90px;">
+        <div class="episode-tabs">
+            <button class="episode-tab active" data-tab="season1">시즌1</button>
+            <button class="episode-tab" data-tab="season2">시즌2</button>
+            <button class="episode-tab" data-tab="season3">시즌3</button>
+            <button class="episode-tab" data-tab="season4">시즌4</button>
+            <button class="episode-tab" data-tab="season5">시즌5</button>
+            <button class="episode-tab" data-tab="season6">시즌6</button>
+            <button class="episode-tab" data-tab="movie">영화/스페셜</button>
+        </div>
+        <section class="episode-section active" id="season1">
+            <h3>시즌 1</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>1화: 스톤하트</h4><p>레이디버그와 블랙캣의 첫 만남!</p></div>
+                <div class="episode-card"><h4>2화: 버블러</h4><p>친구를 위해 싸우는 영웅들</p></div>
+                <!-- ... 더 많은 에피소드 ... -->
+            </div>
+        </section>
+        <section class="episode-section" id="season2">
+            <h3>시즌 2</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>1화: 콜렉터</h4><p>새로운 빌런의 등장!</p></div>
+                <!-- ... 더 많은 에피소드 ... -->
+            </div>
+        </section>
+        <section class="episode-section" id="season3">
+            <h3>시즌 3</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>1화: 카멜레온</h4><p>변신의 시작!</p></div>
+                <!-- ... 더 많은 에피소드 ... -->
+            </div>
+        </section>
+        <section class="episode-section" id="season4">
+            <h3>시즌 4</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>1화: 트루스</h4><p>진실과 거짓의 대결</p></div>
+                <!-- ... 더 많은 에피소드 ... -->
+            </div>
+        </section>
+        <section class="episode-section" id="season5">
+            <h3>시즌 5</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>1화: 이볼루션</h4><p>새로운 힘의 각성</p></div>
+                <!-- ... 더 많은 에피소드 ... -->
+            </div>
+        </section>
+        <section class="episode-section" id="season6">
+            <h3>시즌 6</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>1화: 미정</h4><p>최신 시즌, 곧 공개!</p></div>
+                <!-- ... 더 많은 에피소드 ... -->
+            </div>
+        </section>
+        <section class="episode-section" id="movie">
+            <h3>영화/스페셜</h3>
+            <div class="episode-list">
+                <div class="episode-card"><h4>레이디버그와 블랙캣: 더 무비</h4><p>파리의 영웅들이 영화로!</p></div>
+                <div class="episode-card"><h4>미라큘러스 월드: 뉴욕</h4><p>뉴욕에서 펼쳐지는 특별한 모험</p></div>
+                <div class="episode-card"><h4>크리스마스 스페셜</h4><p>따뜻한 겨울, 영웅들의 이야기</p></div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>레이디버그 & 블랙캣</h3>
+                    <p>파리의 수호자들의 모험을 함께하세요!</p>
+                </div>
+                <div class="footer-section">
+                    <h3>바로가기</h3>
+                    <ul>
+                        <li><a href="characters.html">캐릭터 소개</a></li>
+                        <li><a href="episodes.html">에피소드</a></li>
+                        <li><a href="gallery.html">갤러리</a></li>
+                        <li><a href="community.html">커뮤니티</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>소셜 미디어</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 레이디버그 & 블랙캣. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script>
+    // 탭 전환 기능
+    const tabs = document.querySelectorAll('.episode-tab');
+    const sections = document.querySelectorAll('.episode-section');
+    tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            tabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            sections.forEach(sec => sec.classList.remove('active'));
+            document.getElementById(this.dataset.tab).classList.add('active');
+        });
+    });
+    // 모바일 메뉴 토글
+    document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+        const navLinks = document.querySelector('.nav-links');
+        navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+    });
+    </script>
+</body>
+</html> 
